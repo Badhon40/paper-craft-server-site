@@ -6,11 +6,11 @@
             "use":"@versel/node"
         }
     ],
-    "route":[
+    "routes":[
         {
             "src":"/(.*)",
-            "dest":"/"
-            
+            "dest":"/",
+            "methods":["GET","PUT","PATCH","POST","DELETE"]
         }
     ]
 }
