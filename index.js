@@ -25,6 +25,8 @@ const client = new MongoClient(uri, {
 async function run() {
   try {
     const productCollection=client.db('artAndCraft').collection('addArt');
+
+    // const cardCollection=client.db('artAndCraft').collection('cardSection')
     // await client.connect();
     // await client.db("admin").command({ ping: 1 });
     
@@ -33,6 +35,14 @@ async function run() {
         const result=await productCollection.insertOne(req.body)
         res.send(result)
     })
+      
+
+    app.get('/allItem',async(req,res)=>{
+      const result=await productCollection.find().toArray()
+      // console.log(result)
+      res.send(result)
+    })
+  
 
     // app.get('/addItem',async(req,res)=>{
     //     const cursor=productCollection.find()
