@@ -1,6 +1,6 @@
 const express=require('express')
 const cors=require('cors')
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config()
  const app=express()
  const port=process.env.PORT || 5000
@@ -34,12 +34,33 @@ async function run() {
         res.send(result)
     })
 
-    app.get('/myItems/:email',async(req,res)=>{
-        console.log(req.params.email);
-        const result=await productCollection.find({email:req.params.email}).toArray();
+    // app.get('/addItem',async(req,res)=>{
+    //     const cursor=productCollection.find()
+
+    //     const result=await cursor.toArray()
+    //     res.send(result)
+    // })
+     
+    app.get("/myItem/:email",async(req,res)=>{
+        const query=req.params.email
+        console.log(query)
+        const result=await productCollection.find({email:query}).toArray();
         res.send(result)
 
     })
+
+    app.get('/viewOneDetail/:id',async(req,res)=>{
+        const query=req.params.id
+        console.log(query)
+        const result=await productCollection.findOne({_id:new ObjectId(query)})
+        res.send(result)
+    })
+
+    // app.update('/updateDetail/:id',async(req,res)=>{
+    //     const result=await productCollection.
+    // })
+    
+   
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
   } finally {
     // Ensures that the client will close when you finish/error
