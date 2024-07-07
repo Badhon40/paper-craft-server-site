@@ -31,7 +31,7 @@ async function run() {
     // await client.db("admin").command({ ping: 1 });
     
     app.post('/addItem',async(req,res)=>{
-        console.log(req.body);
+        // console.log(req.body);
         const result=await productCollection.insertOne(req.body)
         res.send(result)
     })
@@ -45,7 +45,7 @@ async function run() {
 
     app.get("/myItem/:email",async(req,res)=>{
         const query=req.params.email
-        console.log(query)
+        // console.log(query)
         const result=await productCollection.find({email:query}).toArray();
         res.send(result)
 
@@ -54,7 +54,7 @@ async function run() {
 
     app.get('/viewOneDetail/:id',async(req,res)=>{
         const query=req.params.id
-        console.log(query)
+        // console.log(query)
         const result=await productCollection.findOne({_id:new ObjectId(query)})
         res.send(result)
     })
@@ -77,7 +77,7 @@ async function run() {
          
         }
         const result=await productCollection.updateOne(query,data)
-        console.log(result)
+        // console.log(result)
         res.send(result)
     })
 
