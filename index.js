@@ -38,19 +38,11 @@ async function run() {
 
    
           app.get('/allItem',async(req,res)=>{
-      const result=await productCollection.find().toArray()
-      // console.log(result)
-      res.send(result)
-    })
-    
+          const result=await productCollection.find().toArray()
+          // console.log(result)
+          res.send(result)
+        })
 
-    // app.get('/addItem',async(req,res)=>{
-    //     const cursor=productCollection.find()
-
-    //     const result=await cursor.toArray()
-    //     res.send(result)
-    // })
-     
     app.get("/myItem/:email",async(req,res)=>{
         const query=req.params.email
         console.log(query)
@@ -58,6 +50,7 @@ async function run() {
         res.send(result)
 
     })
+    
 
     app.get('/viewOneDetail/:id',async(req,res)=>{
         const query=req.params.id
