@@ -9,7 +9,7 @@ require('dotenv').config()
  app.use(cors({
   origin:[
     "http://localhost:5173/",
-    "https://art-and-craft-705cb.web.app",
+    "https://art-and-craft-705cb.web.app"
 
   ]
  }))
