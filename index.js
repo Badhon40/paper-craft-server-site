@@ -6,7 +6,13 @@ require('dotenv').config()
  const port=process.env.PORT || 5000
  
  app.use(express.json())
- app.use(cors())
+ app.use(cors({
+  origin:[
+    "http://localhost:5173/",
+    "https://art-and-craft-705cb.web.app",
+
+  ]
+ }))
 
 
  
@@ -83,7 +89,7 @@ async function run() {
 
     app.delete('/delete/:id',async(req,res)=>{
       const result= await productCollection.deleteOne({_id:new ObjectId(req.params.id)})
-      res.send(resultnodemon)
+      res.send(result)
     })
 
 
