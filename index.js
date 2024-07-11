@@ -1,21 +1,34 @@
 const express=require('express')
-const cors=require('cors')
+
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config()
+const cors=require('cors')
  const app=express()
  const port=process.env.PORT || 5000
  
  app.use(express.json())
- app.use(cors({
-  origin:[
-    "http://localhost:5173/",
-    "https://art-and-craft-705cb.web.app"
+//  app.use(cors({
+//   origin:[
+//     "http://localhost:5173",
+//     "https://art-and-craft-705cb.web.app"
 
-  ]
- }))
+//   ]
+//  }))
+// const corsOptions = {
+//   origin: [
+//     'http://localhost:5173',
+//     'http://localhost:5174',
+//     "https://art-and-craft-705cb.web.app"
+    
+//   ],
+//   credentials: true,
+//   optionSuccessStatus: 200,
+// }
+
+ app.use(cors())
 
 
- 
+//  https://server-site-roan-eight.vercel.app
 
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.xbwmhk5.mongodb.net/?appName=Cluster0`;
 
